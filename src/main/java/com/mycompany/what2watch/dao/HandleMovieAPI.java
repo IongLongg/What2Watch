@@ -14,7 +14,6 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mycompany.what2watch.App;
 import com.mycompany.what2watch.model.Movie;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,10 +27,11 @@ import org.json.JSONObject;
 public class HandleMovieAPI {
     public static final String API_KEY = "e3baaff5f3e019058caf702356e68e07";
     public static final String FEATURED_API = 
-                "https://api.themoviedb.org/3/discover/movie"; 
+                "https://api.themoviedb.org/3/movie/popular"; 
     public static final String SEARCH_API = 
                 "https://api.themoviedb.org/3/search/movie"; 
-    
+    public static final String GET_MOVIE_DETAILS = 
+                "https://api.themoviedb.org/3/movie/{movie_id}"; 
     
     
     public List<Movie> getAllMovie(){
@@ -41,7 +41,7 @@ public class HandleMovieAPI {
         try {
             response = Unirest.get(FEATURED_API)
                                 .queryString("api_key", API_KEY)
-                                .queryString("sort_by", "popularity.desc")
+//                                .queryString("sort_by", "popularity.desc")
                                 .asJson();
             System.out.println(response.getStatus());
             JSONArray jArray = (JSONArray) response.getBody().getObject().get("results");
@@ -84,4 +84,25 @@ public class HandleMovieAPI {
         }
         return movies;
     }
+    
+     public List<Movie> getMovieByIds(ArrayList<Integer> movieIds){
+        List<Movie> movies = new ArrayList<>();
+         for (Integer movieId : movieIds) {
+             HttpResponse <JsonNode> response;
+            try {
+                response = Unirest.get(GET_MOVIE_DETAILS)
+                                    .routeParam("movie_id", Integer.toString(movieId))
+                                    .queryString("api_key", API_KEY)
+                                    .queryString("language", "en-US")
+                                    .asJson();
+                JSONObject jo = response.getBody().getObject();
+                Gson gson = new GsonBuilder().create();
+                Movie movie = gson.fromJson(jo.toString(), Movie.class);
+                movies.add(movie);
+            } catch (UnirestException ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         }
+        return movies;
+    } 
 }

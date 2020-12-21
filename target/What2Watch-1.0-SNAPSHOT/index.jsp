@@ -35,6 +35,5 @@
         <div class="container ">
             <h1>Hello world</h1>
         </div>
-        <jsp:include page="layout/footer.jsp"></jsp:include>
     </body>
 </html>

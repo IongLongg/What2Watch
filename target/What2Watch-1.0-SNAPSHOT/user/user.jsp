@@ -35,14 +35,14 @@
                       <li class="nav-item active">
                         <a class="nav-link" href="<%=request.getContextPath()%>/logout">Logout <span class="sr-only">(current)</span></a>
                       </li>
-                      <li class="nav-item active">
-                        <a class="nav-link" href="<%=request.getContextPath()%>/sign-up">Sign up <span class="sr-only">(current)</span></a>
-                      </li>
+                      
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="container">
+        
+        <div class="container vh-100">
+            <br>
             <h1>Profile</h1>
             <div class="d-flex">
                 <img 
@@ -51,17 +51,18 @@
                     width="300px"
                     height="300px"/>
                 <ul class="list-group list-group-flush ml-4">
+                    <li class="list-group-item">ID : ${sessionScope.user.id}</li>
                     <li class="list-group-item">Full name : ${sessionScope.user.fullname}</li>
                     <li class="list-group-item">Username : ${sessionScope.user.username}</li>
                 </ul>
             </div>
-            <h1>List movie</h1>
+                
+            <br>
+                
+            <h1>List like movies</h1>
             
             <div class="row">
                 <c:forEach items="${movies}" var="movie">
-                    <c:if test="${movies.size() == 0}">
-                        <<h1>Empty</h1>
-                    </c:if>
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="card mb-4" style="width: auto;">
                             <img class="card-img-top" src="https://image.tmdb.org/t/p/w1280${movie.poster_path}" alt="${movie.poster_path}">

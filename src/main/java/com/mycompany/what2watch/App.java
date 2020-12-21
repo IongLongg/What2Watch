@@ -29,16 +29,14 @@ public class App {
         // Host url
         String API_KEY = "e3baaff5f3e019058caf702356e68e07";
         String FEATURED_API = 
-                    "https://api.themoviedb.org/3/discover/movie?api_key=e3baaff5f3e019058caf702356e68e07&sort_by=popularity.desc&page=1"; 
+                    "https://api.themoviedb.org/3/movie/popular"; 
         String SEARCH_API = 
                     "https://api.themoviedb.org/3/search/movie";
         
         HttpResponse <JsonNode> response;
         try {
-            response = Unirest.get(SEARCH_API)
+            response = Unirest.get(FEATURED_API)
                                 .queryString("api_key", API_KEY)
-                                .queryString("query", "flash")
-                                .queryString("page", 1)
                                 .asJson();
             System.out.println(response.getStatus());
 //            List<Movie> movies = new ArrayList<>();

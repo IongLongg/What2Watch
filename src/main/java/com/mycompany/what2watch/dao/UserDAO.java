@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -70,4 +71,27 @@ public class UserDAO {
         
         return user;
     } 
+    
+    public ArrayList<Integer> getListLikeMovieId(int userId){
+        ArrayList<Integer> movieIds = new ArrayList<>();
+        
+        String SELECT_LIKEMOVIE_FROM_USER = "select movieId from likeMovies where userId = ?";
+        
+        try (
+                Connection connection = JDBCUtils.getConnection();
+                PreparedStatement ps = connection.prepareStatement(SELECT_LIKEMOVIE_FROM_USER)
+            ){
+                ps.setString(1, Integer.toString(userId));
+                System.out.println(ps);
+                
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    int movie_id = rs.getInt("movieId");
+                    movieIds.add(movie_id);
+                }
+        } catch (SQLException ex) {
+            JDBCUtils.printSQLException(ex);
+        }
+        return movieIds;
+    }
 }

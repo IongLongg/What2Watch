@@ -7,6 +7,7 @@ package com.mycompany.what2watch.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,11 +44,9 @@ public class LogoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        if(session.getAttribute("username") != null){
-            session.invalidate();
-            request.getRequestDispatcher("login/login.jsp").forward(request, response);
-        }
+        request.getSession().invalidate();
+        RequestDispatcher view = request.getRequestDispatcher("login/login.jsp");
+        view.forward(request, response);
     }
 
     /**

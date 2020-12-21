@@ -9,7 +9,7 @@
 <html>
     <jsp:include page="../layout/header.jsp"></jsp:include>
     <body>
-        <div class="container ">
+        <div class="container">
             <h1>Login</h1>
             <form 
                 class="w-50" 
@@ -32,6 +32,5 @@
                     <a class="btn btn-outline-primary" href="<%=request.getContextPath()%>/sign-up">Sign up</a>
               </form>
         </div>
-        <jsp:include page="../layout/footer.jsp"></jsp:include>
     </body>
 </html>

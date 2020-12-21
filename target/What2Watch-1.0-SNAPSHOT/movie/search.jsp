@@ -35,16 +35,16 @@
                         <a class="nav-link" href="<%=request.getContextPath()%>/logout">Logout <span class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item active">
-                        <a class="nav-link" href="<%=request.getContextPath()%>/sign-up">Sign up <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="<%=request.getContextPath()%>/user">My account<span class="sr-only">(current)</span></a>
                       </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="container ">
+        <div class="container mt-4">
             <div class="row">
                 <c:forEach items="${movies}" var="movie">
-                    <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="shadow col-sm-6 col-md-4 col-lg-3">
                         <div class="card mb-4" style="width: auto;">
                             <img class="card-img-top" src="https://image.tmdb.org/t/p/w1280${movie.poster_path}" alt="${movie.poster_path}">
                             <div class="card-body">
@@ -52,7 +52,10 @@
                               <p class="card-text">${movie.overview}</p>
                             </div>
                             <div class="card-body d-flex justify-content-between align-items-center">
-                                <a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank" class="btn btn-primary">More</a>
+                                <div>
+                                    <a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank" class="btn btn-primary">More</a>
+                                    <button class="btn btn-outline-success">Add</button>
+                                </div>
                                 <span>${movie.vote_average}</span>
                             </div>
                         </div>

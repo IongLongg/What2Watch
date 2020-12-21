@@ -4,7 +4,7 @@
     Created on : Dec 18, 2020, 1:39:40 AM
     Author     : Admin
 --%>
-<footer class="fixed-bottom bg-light text-center text-lg-start">
+<footer class="bg-light text-center text-lg-start">
             <!-- Copyright -->
     <div class="w-100 text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
       © 2020 Copyright:

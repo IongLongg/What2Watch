@@ -11,11 +11,9 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.mycompany.what2watch.App;
 import com.mycompany.what2watch.dao.HandleMovieAPI;
 import static com.mycompany.what2watch.dao.HandleMovieAPI.API_KEY;
 import static com.mycompany.what2watch.dao.HandleMovieAPI.FEATURED_API;
-import static com.mycompany.what2watch.dao.HandleMovieAPI.SEARCH_API;
 import com.mycompany.what2watch.model.Movie;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,7 +60,6 @@ public class MovieController extends HttpServlet {
             try {
                 response = Unirest.get(FEATURED_API)
                             .queryString("api_key", API_KEY)
-                            .queryString("sort_by", "popularity.desc")
                             .queryString("page", page)
                             .asJson();
 
