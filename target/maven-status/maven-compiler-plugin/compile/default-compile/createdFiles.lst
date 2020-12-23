@@ -2,13 +2,11 @@ com\mycompany\what2watch\model\Movie.class
 com\mycompany\what2watch\model\User.class
 com\mycompany\what2watch\controller\LoginController.class
 com\mycompany\what2watch\utils\JDBCUtils.class
-com\mycompany\what2watch\dao\MovieDAO.class
 com\mycompany\what2watch\controller\LogoutController.class
 com\mycompany\what2watch\controller\UserController.class
 com\mycompany\what2watch\controller\SignUpController.class
 com\mycompany\what2watch\model\LoginBean.class
 com\mycompany\what2watch\controller\MovieController.class
-com\mycompany\what2watch\App.class
 com\mycompany\what2watch\controller\SearchController.class
 com\mycompany\what2watch\dao\LoginDAO.class
 com\mycompany\what2watch\dao\HandleMovieAPI.class

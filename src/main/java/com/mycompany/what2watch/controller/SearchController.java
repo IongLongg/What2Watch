@@ -11,13 +11,11 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.mycompany.what2watch.App;
 import com.mycompany.what2watch.dao.HandleMovieAPI;
 import static com.mycompany.what2watch.dao.HandleMovieAPI.API_KEY;
 import static com.mycompany.what2watch.dao.HandleMovieAPI.SEARCH_API;
 import com.mycompany.what2watch.model.Movie;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -87,7 +85,7 @@ public class SearchController extends HttpServlet {
             RequestDispatcher view = req.getRequestDispatcher("movie/search.jsp");
             view.forward(req, resp);
         } catch (UnirestException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 

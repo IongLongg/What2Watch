@@ -22,28 +22,30 @@
                     <form 
                         action="<%=request.getContextPath()%>/search"
                         method="get"
-                        class="form-inline mx-auto my-2 my-lg-0 text-center">
+                        class="d-flex input-group w-auto mx-auto">
                         <input 
                             class="form-control mr-sm-2" 
                             type="search" 
                             placeholder="Search" 
                             aria-label="Search"
                             name="title">
-                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                     </form>
                     <ul class="navbar-nav">
-                      <li class="nav-item active">
-                        <a class="nav-link" href="<%=request.getContextPath()%>/logout">Logout <span class="sr-only">(current)</span></a>
-                      </li>
-                      
+                        <li class="nav-item active">
+                            <a class="nav-link" href="<%=request.getContextPath()%>/movie"><i class="fas fa-film"></i>  Home</a>
+                        </li>
+                        <li class="nav-item active">
+                          <a class="nav-link" href="<%=request.getContextPath()%>/logout"><i class="fas fa-sign-out-alt"></i>  Logout</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
         
-        <div class="container vh-100">
+        <div class="container">
             <br>
-            <h1>Profile</h1>
+            <h1><i class="fas fa-address-card"></i>  Profile</h1>
             <div class="d-flex">
                 <img 
                     src="https://media.istockphoto.com/vectors/default-avatar-profile-icon-grey-photo-placeholder-vector-id846183008?b=1&k=6&m=846183008&s=612x612&w=0&h=ZC65KHQwZj_-NvgmW8EAhNEVWjbOSUBfJXJxHXxhVrk=" 
@@ -59,27 +61,58 @@
                 
             <br>
                 
-            <h1>List like movies</h1>
-            
-            <div class="row">
-                <c:forEach items="${movies}" var="movie">
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="card mb-4" style="width: auto;">
-                            <img class="card-img-top" src="https://image.tmdb.org/t/p/w1280${movie.poster_path}" alt="${movie.poster_path}">
-                            <div class="card-body">
-                              <h5 class="card-title">${movie.original_title}</h5>
-                              <p class="card-text">${movie.overview}</p>
-                            </div>
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank" class="btn btn-primary">More</a>
-                                <span>${movie.vote_average}</span>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-                            
+            <h1><i class="fas fa-list"></i>  List like movies</h1>
+            <br>
+            <div id="movies"></div>
         </div>
+        <footer class="bg-light text-center text-lg-start">
+            <!-- Copyright -->
+            <div class="w-100 text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+              © 2020 Copyright:
+              <a class="text-dark" href="#">Movie App</a>
+            </div>
+        </footer>  
         <jsp:include page="../layout/footer.jsp"></jsp:include>
+        <script>
+            $(document).ready(function(){
+                recordMovie();
+                
+                $(document).on("click", "#unlike", function(e){
+                    var movieId = $(this).data('id').toString();
+                    unlike(movieId);
+                    e.preventDefault();
+                }); 
+            });
+           
+            function recordMovie(){
+                $('#movies').load("user/record.jsp");
+            }
+           
+            function unlike(movieId) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'It will be deleted permanently',
+                    type: 'warning',
+                    showCancelButton: true,
+                    showLoaderOnConfirm: true,
+                    preConfirm: function(){
+                        return new Promise(function(resolve){
+                            $.ajax({
+                                type: "POST",
+                                url: "user/unlike.jsp",
+                                dataType: 'JSON',
+                                data: 'movieId='+movieId+'&userId='+${sessionScope.user.id}
+                            }).done(function(response){
+                                Swal.fire("Unliked!", response.message, response.status);
+                                recordMovie();
+                            }).fail(function(){
+                                Swal.fire('Oops...', 'Something went wrong!', 'error');
+                            });
+                        });
+                    },
+                    allowOutsideClick: false
+                });
+            }
+        </script>
     </body>
 </html>

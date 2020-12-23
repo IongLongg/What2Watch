@@ -59,12 +59,6 @@ public class UserController extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher("login/login.jsp");
             view.forward(request, response);
         } else {
-            User user = (User) request.getSession().getAttribute("user");
-            ArrayList<Integer> movieIds = userDao.getListLikeMovieId(user.getId());
-            List<Movie> movies = new ArrayList<>();
-            
-            movies = hma.getMovieByIds(movieIds);
-            request.setAttribute("movies", movies);
             RequestDispatcher view = request.getRequestDispatcher("user/user.jsp");
             view.forward(request, response);
         }

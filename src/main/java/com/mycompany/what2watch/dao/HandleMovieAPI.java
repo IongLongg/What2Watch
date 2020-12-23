@@ -11,12 +11,9 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.mycompany.what2watch.App;
 import com.mycompany.what2watch.model.Movie;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -55,7 +52,7 @@ public class HandleMovieAPI {
             } 
 //            System.out.println(movies.size());
         } catch (UnirestException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         
         return movies;
@@ -80,7 +77,7 @@ public class HandleMovieAPI {
                 } 
             } 
         } catch (UnirestException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return movies;
     }
@@ -100,7 +97,7 @@ public class HandleMovieAPI {
                 Movie movie = gson.fromJson(jo.toString(), Movie.class);
                 movies.add(movie);
             } catch (UnirestException ex) {
-                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
          }
         return movies;
