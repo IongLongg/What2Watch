@@ -42,4 +42,30 @@ What2Watch là ứng dụng web tìm kiếm phim.
       
   ## 2. Sử dụng tính năng 
 ![welcome](assets/welcome.png)
+
+	Trang chủ
+![home](assets/home.png)
+![homepage](assets/homepage.png)
+	
+	Tìm kiếm
+![search](assets/search.png)
+![search](assets/searchpage.png)
+	
+	Đăng ký, đăng nhập
+![login](assets/login.png)
+![signup](assets/signup.png)
+
+	Quay lại trang chủ vả sử dụng tính năng like 
+![like](assets/like.png)
+	
+	Vào trang cá nhân và unlike
+![account](assets/account.png)
+![account](assets/unlike.png)
+
+# Cảm ơn vì đã theo dõi
+
+
+
+
+	
  
