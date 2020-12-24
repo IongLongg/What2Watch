@@ -51,7 +51,7 @@ What2Watch là ứng dụng web tìm kiếm phim.
 ![search](assets/search.png)
 ![search](assets/searchpage.png)
 	
-	Đăng ký, đăng nhập
+	Bấm vào biểu tượng My Account để đăng ký, đăng nhập
 ![login](assets/login.png)
 ![signup](assets/signup.png)
 
@@ -60,7 +60,7 @@ What2Watch là ứng dụng web tìm kiếm phim.
 	
 	Vào trang cá nhân và unlike
 ![account](assets/account.png)
-![account](assets/unlike.png)
+![unlike](assets/unlike.png)
 
 # Cảm ơn vì đã theo dõi
 
