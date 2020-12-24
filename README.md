@@ -41,6 +41,5 @@ What2Watch là ứng dụng web tìm kiếm phim.
       go;
       
   ## 2. Sử dụng tính năng 
-  
-    
+![welcome](assets/welcome.png)
  
