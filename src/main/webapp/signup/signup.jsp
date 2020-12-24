@@ -13,7 +13,7 @@
         <div class="container mt-5 col-lg-3 col-md-4 col-sm-6">
             <h1 class="text-center">Sign up</h1>
             <form 
-                action="<%=request.getContextPath()%>/sign-up" 
+                action="<%=request.getContextPath()%>/signup" 
                 method="POST">
                     <div class="form-group">
                       <label for="fullname">Full name</label>
@@ -31,10 +31,9 @@
                     <button type="submit" class="btn btn-primary">Sign up</button>
                     <a class="btn btn-outline-primary" href="<%=request.getContextPath()%>/login">Login</a>
               </form>
-                <c:if test="${notifyMessage} != null">
-                    <div class="alert alert-info">${notifyMessage}</div>
-                </c:if>
+              <br>
+                <div class="alert alert-info">${notifyMessage}</div>
         </div>
-        <jsp:include page="../layout/footer,jsp"></jsp:include>
+        <jsp:include page="../layout/footer.jsp"></jsp:include>
     </body>
 </html>

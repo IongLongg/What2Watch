@@ -41,9 +41,6 @@
                       <li class="nav-item active">
                         <a class="nav-link" href="<%=request.getContextPath()%>/user"><i class="fas fa-user-circle"></i>   My Account</a>
                       </li>
-                      <li class="nav-item active">
-                        <a class="nav-link" href="<%=request.getContextPath()%>/logout"><i class="fas fa-sign-out-alt"></i>  Logout</a>
-                      </li>
                     </ul>
                 </div>
             </div>

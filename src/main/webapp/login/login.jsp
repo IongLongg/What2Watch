@@ -24,9 +24,11 @@
                     </div>
                     <div class="form-group ">
                         <button type="submit" class="btn btn-primary">Login</button>
-                        <a class="btn btn-outline-primary" href="<%=request.getContextPath()%>/sign-up">Sign up</a>
+                        <a class="btn btn-outline-primary" href="<%=request.getContextPath()%>/signup">Sign up</a>
                     </div>
               </form>
+                    <br>
+                <div class="alert alert-info">${notifyMessage}</div>
         </div>
     </body>
 </html>

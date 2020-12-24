@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet("/sign-up")
+@WebServlet("/signup")
 public class SignUpController extends HttpServlet{
     private static final long serialVersionUID = 1L;
     private UserDAO userDao;
@@ -30,7 +30,7 @@ public class SignUpController extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("signup/sign-up.jsp");
+        resp.sendRedirect("signup/signup.jsp");
     }
 
     @Override
@@ -54,13 +54,14 @@ public class SignUpController extends HttpServlet{
             int result = userDao.registerUser(user);
             if(result == 1){
                 req.setAttribute("notifyMessage", "Successful !");
+                req.getRequestDispatcher("signup/signup.jsp").forward(req, resp);
             } else {
                 req.setAttribute("notifyMessage", "Failed !");
+                req.getRequestDispatcher("signup/signup.jsp").forward(req, resp);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         
-        req.getRequestDispatcher("signup/sign-up.jsp").forward(req, resp);
     }
 }
